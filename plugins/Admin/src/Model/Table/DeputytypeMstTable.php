@@ -20,6 +20,7 @@ class DeputytypeMstTable extends Table
      * @param array $config The configuration for the Table.
      * @return void
      */
+
     public function initialize(array $config)
     {
         parent::initialize($config);
@@ -27,6 +28,8 @@ class DeputytypeMstTable extends Table
         $this->table('deputytype_mst');
         $this->displayField('id');
         $this->primaryKey('id');
+
+        $this->addBehavior('Tree');
     }
 
     /**
