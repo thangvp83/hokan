@@ -3,7 +3,9 @@
 /* --- System Group --- */
 if (!defined('GROUP_ADMIN')) { define('GROUP_ADMIN', 1); } // Default
 if (!defined('GROUP_MEMBER')) { define('GROUP_MEMBER', 2); }
-    
+if (!defined('GROUP_CUSTOMER')) { define('GROUP_CUSTOMER', 3); }
+if (!defined('GROUP_AGENT')) { define('GROUP_AGENT', 4); }
+
 /* --- User status --- */
 if (!defined('USER_STATUS_BLOCK')) {define('USER_STATUS_BLOCK', 0);}
 if (!defined('USER_STATUS_ACTIVE')) {define('USER_STATUS_ACTIVE', 1);}
@@ -56,8 +58,14 @@ return [
             'gender'=>[0=>__('Female'),1=>__('Male')],
             'group'=> [
                 GROUP_ADMIN => __('Group admin'),
-                GROUP_MEMBER => __('Group member')
+                GROUP_MEMBER => __('Group member'),
+                GROUP_CUSTOMER => __('Group customer'),
+                GROUP_AGENT => __('Group agent'),
+
             ]
+        ],
+        'Agent'=> [
+            'gender'=>[2=>__('Female'),1=>__('Male')],
         ],
         'System'=> [
             'active'=> [

@@ -22,7 +22,8 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $email = $this->request->data['email'];
             $password = Security::hash($this->request->data['password'], 'sha1', true);
-            $user = $this->Users->find()->where(['email'=>$email,'password'=>$password,'status <>'=>USER_STATUS_DELETED, 'group' => GROUP_ADMIN])->first();
+//            $user = $this->Users->find()->where(['email'=>$email,'password'=>$password,'status <>'=>USER_STATUS_DELETED, 'group' => GROUP_ADMIN])->first();
+            $user = $this->Users->find()->where(['email'=>$email,'password'=>$password,'status <>'=>USER_STATUS_DELETED])->first();
             if ($user) {
                 if($user->status == USER_STATUS_ACTIVE){
                     $user->auth_token = \Core::randomCode();

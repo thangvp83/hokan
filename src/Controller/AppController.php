@@ -159,7 +159,7 @@ class AppController extends Controller
     function checkLogin()
     {
         $this->loadModel('Users');
-        
+
         $user = $this->request->session()->read('Core.Users');
 
         if(isset($user))
