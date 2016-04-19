@@ -4,17 +4,22 @@ namespace Admin\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * DeputytypeMst Entity.
+ * InsuranceMst Entity.
  *
  * @property int $id
- * @property string $main_code
+ * @property string $deputytype_code
  * @property string $code
- * @property int $order
- * @property string $value_01
- * @property string $value_02
+ * @property string $insurance_name_local_01
+ * @property string $insurance_name_local_02
+ * @property string $insurance_name_eng
+ * @property bool $lifetime_flg
  * @property bool $data_flg
+ * @property \Cake\I18n\Time $created_time
+ * @property string $create_user
+ * @property \Cake\I18n\Time $update_time
+ * @property string $update_user
  */
-class DeputytypeMst extends Entity
+class InsuranceMst extends Entity
 {
 
     /**
@@ -30,5 +35,4 @@ class DeputytypeMst extends Entity
         '*' => true,
         'id' => false,
     ];
-
 }

@@ -149,7 +149,7 @@ class UsersController extends AppController
 
             $agent_member->agent_member_id = $id;
             $agent_member->birthday = new Date($this->request->data['birthday']);
-            $agent_member->created_time = new Date($this->request['created_time']);
+            $agent_member->created_time = new Date($this->request->data['created_time']);
             $agent_member->update_time = new Date($this->request->data['update_time']);
 
             if ($this->AgentMember->save($agent_member))

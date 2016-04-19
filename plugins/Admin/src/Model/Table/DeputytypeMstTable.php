@@ -21,6 +21,7 @@ class DeputytypeMstTable extends Table
      * @return void
      */
 
+    public $cate;
     public function initialize(array $config)
     {
         parent::initialize($config);
@@ -29,7 +30,7 @@ class DeputytypeMstTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
-        $this->addBehavior('Tree');
+//        $this->addBehavior('Tree');
     }
 
     /**
@@ -70,5 +71,37 @@ class DeputytypeMstTable extends Table
             ->notEmpty('data_flg');
 
         return $validator;
+    }
+
+    function buildTree($categories,$parent_id = 0, $option = 'id', $char = '')
+    {
+
+        foreach ($categories as $key => $item)
+        {
+            if ($item['main_code'] == $parent_id)
+            {
+                $this->cate[$item[$option]] = $char.$item['name'];
+                unset($categories[$key]);
+
+                $this->buildTree($categories, $item['id'], $option, $char.'---');
+            }
+        }
+        return $this->cate;
+    }
+
+    public function generateCategories($list){
+        $arr_cate = array();
+
+        if($list) {
+            foreach ($list as $key => $value) {
+                $arr_cate[$value['id']] = array(
+                    'main_code' => intval($value['main_code']),
+                    'id' => $value['id'],
+                    'code' => $value['code'],
+                    'name' => $value['value_01'],
+                );
+            }
+        }
+        return $arr_cate;
     }
 }

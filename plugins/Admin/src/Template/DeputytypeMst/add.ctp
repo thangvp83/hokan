@@ -5,7 +5,7 @@
         <h1 class="page-title txt-color-blueDark">
             <i class="fa fa-cog fa-fw "></i>
             <?= __('System');?>
-            <span> > <?= $this->Html->link(__('Add Deputytype Mst'), ['action' => 'index'])?></span>
+            <span> > <?= $this->Html->link(__('List Deputytype Mst'), ['action' => 'index'])?></span>
         </h1>
     </div>
 </div>
@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label"><?= __('Main Code') ?></label>
                             <div class="col-md-4">
-                                <?= $this->Form->input('main_code', ['options' => $list,'required' => false, 'placeholder' => __('Main Code'), 'class'=>'form-control']); ?>
+                                <?= $this->Form->input('main_code', ['options' => $cate,'required' => false, 'placeholder' => __('Main Code'), 'class'=>'form-control']); ?>
                             </div>
                         </div>
                         <div class="form-group">

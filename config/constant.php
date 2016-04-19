@@ -52,6 +52,10 @@ if (!defined('USER_REGISTER_ACTIVE')) {define('USER_REGISTER_ACTIVE', 2);} // ha
 if (!defined('USER_REGISTER_SSO')) {define('USER_REGISTER_SSO', 1);} // has ID and Password
 if (!defined('USER_REGISTER_PENDING')) {define('USER_REGISTER_PENDING', 0);} // has ID and Password
 
+if (!defined('NONLIFE')) {define('NONLIFE', 0);}
+if (!defined('LIFETIME')) {define('LIFETIME', 1);}
+if (!defined('FORMULA')) {define('FORMULA', -1);}
+
 return [
     'Core' => [
         'Users'=> [
@@ -66,6 +70,13 @@ return [
         ],
         'Agent'=> [
             'gender'=>[2=>__('Female'),1=>__('Male')],
+        ],
+        'Insurance' => [
+            'lifetime_flg' => [
+                NONLIFE => 'Non-life',
+                LIFETIME => 'lifetime',
+                FORMULA => 'the selection formula',
+            ]
         ],
         'System'=> [
             'active'=> [

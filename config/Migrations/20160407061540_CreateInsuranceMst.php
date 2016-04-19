@@ -19,7 +19,7 @@ class CreateInsuranceMst extends AbstractMigration
         $table->addColumn('insurance_name_local_01', 'string', ['limit' => 100, 'null' => false]);
         $table->addColumn('insurance_name_local_02', 'string', ['limit' => 100, 'null' => false]);
         $table->addColumn('insurance_name_eng', 'string', ['limit' => 100, 'null' => true]);
-        $table->addColumn('lifetime_flg', 'boolean', ['limit' => 1, 'null' => false, 'default' => -1, 'comment' => 'Non-life = 0, lifetime = 1, the selection formula = -1']);
+        $table->addColumn('lifetime_flg', 'boolean', ['limit' => 2, 'null' => false, 'default' => -1, 'comment' => 'Non-life = 0, lifetime = 1, the selection formula = -1']);
         $table->addColumn('data_flg', 'boolean', ['limit' => 1, 'null' => false, 'default' => 1]);
 
         $table->addColumn('created_time', 'datetime');

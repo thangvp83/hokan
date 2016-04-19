@@ -9,7 +9,7 @@ $this->Html->addCrumb(__('System'));
             <i class="fa fa-cog fa-fw "></i>
             <?= __('System');?>
             <span>&gt;
-                <?= __('List of deputy type mst')?>
+                <?= __('List of Insurance mst')?>
             </span>
         </h1>
     </div>
@@ -30,7 +30,7 @@ $this->Html->addCrumb(__('System'));
         <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-colorbutton="false" data-widget-deletebutton="false" data-widget-editbutton="true">
             <header>
                 <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                <h2><?= __('List of deputy type mst')?></h2>
+                <h2><?= __('List of Insurance Mst')?></h2>
             </header>
 
             <!-- widget div-->
@@ -43,34 +43,46 @@ $this->Html->addCrumb(__('System'));
 
                 <!-- widget content -->
                 <div class="widget-body">
-                <?php
+                    <?php
                     $status = \Cake\Core\Configure::read('Core.System.active');
-                ?>
+                    $lifetime_flg = \Cake\Core\Configure::read('Core.Insurance.lifetime_flg');
+
+                    ?>
                     <table id="" class="table table-striped table-bordered" width="100%">
                         <?=
                         $this->element('filter_table', [
                             'fields' => [
-                                'main_code',
+                                'deputytype_code',
                                 'code',
-                                'order',
-                                'value_01',
-                                'value_02',
+                                'insurance_name_local_01',
+                                'insurance_name_local_02',
+                                'insurance_name_eng',
+                                'lifetime_flg' => [
+                                    'options' => $lifetime_flg,
+                                    'hw-select' => true,
+                                    'sort' => false
+                                ],
                                 'data_flg' => [
                                     'options' => $status,
                                     'hw-select' => true,
                                     'sort' => false
-                                ]
+                                ],
+//                                'create_time',
+//                                'create_user',
+//                                'update_time',
+//                                'update_user',
                             ]
                         ]);
                         ?>
                         <tbody>
-                        <?php foreach ($deputytypeMst as $item): ?>
+                        <?php foreach ($insuranceMst as $item): ?>
                             <tr>
-                                <td><?= h($item->main_code) ?></td>
+                                <td><?= h($item->deputytype_code) ?></td>
                                 <td><?= h($item->code) ?></td>
-                                <td><?= h($item->order) ?></td>
-                                <td><?= h($item->value_01) ?></td>
-                                <td><?= h($item->value_02) ?></td>
+                                <td><?= h($item->insurance_name_local_01) ?></td>
+                                <td><?= h($item->insurance_name_local_02) ?></td>
+                                <td><?= h($item->insurance_name_eng) ?></td>
+                                <td><?= h($lifetime_flg[$item->lifetime_flg]) ?></td>
                                 <td><center><?= $this->Core->active($item, 'data_flg')?></center></td>
                                 <td>
                                     <center>
