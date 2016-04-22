@@ -1,7 +1,7 @@
 <?php
-namespace Admin\Model\Table;
+namespace App\Model\Table;
 
-use Admin\Model\Entity\DeputytypeMst;
+use App\Model\Entity\DeputytypeMst;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;

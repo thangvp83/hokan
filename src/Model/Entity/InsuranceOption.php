@@ -1,25 +1,22 @@
 <?php
-namespace Admin\Model\Entity;
+namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * InsuranceMst Entity.
+ * InsuranceOption Entity.
  *
  * @property int $id
- * @property string $deputytype_code
+ * @property string $insurance_code
  * @property string $code
- * @property string $insurance_name_local_01
- * @property string $insurance_name_local_02
- * @property string $insurance_name_eng
- * @property bool $lifetime_flg
+ * @property string $option_name
  * @property bool $data_flg
  * @property \Cake\I18n\Time $created_time
  * @property string $create_user
  * @property \Cake\I18n\Time $update_time
  * @property string $update_user
  */
-class InsuranceMst extends Entity
+class InsuranceOption extends Entity
 {
 
     /**

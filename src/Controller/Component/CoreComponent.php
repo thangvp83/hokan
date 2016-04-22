@@ -175,7 +175,7 @@ class CoreComponent extends Component
         $model = $newEntity->source();
         $this->$model = TableRegistry::get($model);
         $entity = $this->$model->patchEntity($newEntity, $data, $option);
-        
+
         /* ---------- Validate and upload hw-file { ---------- */
         $errorTypes = Configure::read('Core.Errors.File');
         $fieldsDelete =[];
@@ -281,7 +281,7 @@ class CoreComponent extends Component
                 {
                     $newEntities = $manyModel->newEntities($data[$many]);
                     $entity->$many = $newEntities;
-                    
+
                     foreach($entity->$many as $item)
                     {
                         if($item->errors()) $hasError = true;

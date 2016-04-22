@@ -465,38 +465,41 @@ var Core =
     
     buildHasMany: function(data)
     {
+
         var itemIndex = 0;
         var container = $(data.option.container);
         var tmpItem = $(data.option.container+' :first-child').first();
         tmpItem.addClass('hw-hasmany-item');
         container.empty();
-                
+
+
         $.each(data.entities,function(index,item)
         {
             itemIndex = index;
             var newItem = tmpItem.clone();
             var arrInput = newItem.find('[name]');
-            
-            // Generate hidden field
-            var hidField = $('<input>').attr('type','hidden').attr('name',data.name+'['+index+'][id]').val(item['ent']['id']);
-            newItem.append(hidField);
-            
+
             $.each(arrInput,function(subIndex,input)
             {
+                // remove error message
+                $(input).parent().removeClass('state-error');
+                $(input).next('.note-error').remove();
+
                 var fieldName = $(input).attr('name');
+
                 $(input).attr('name',data.name+'['+index+']['+fieldName+']');
-                
+
                 if($(input).attr('type') == 'checkbox') // Specific for Cake 3
                 {
                     $(input).val(1);
-                    $(input).parent().parent().prev('[type="hidden"]').val(0);
+                    $(input).prev('[type="hidden"]').val(0);
                     if(item['ent'][fieldName]) $(input).attr('checked',true);
                 }
                 else
                 {
                     $(input).val(item['ent'][fieldName]);
                 }
-                
+
                 $.each(item['errors'], function(field,msg)
                 {
                     if(fieldName == field)
@@ -504,35 +507,38 @@ var Core =
                         if(data.plugin == 'Admin')
                         {
                             var divError = $('<div>').insertAfter(input);
-                            divError.addClass('error-message').text(msg);
+                            divError.addClass('note').addClass('note-error').text(msg);
                             $(input).parent().addClass('state-error');
                         }
                         else
                         {
                             var divError = $('<div>').insertAfter($(input));
-                            divError.addClass('error-message').text(msg);
+                            if(!$(input).parent().find('div.error-message')) {
+                                divError.addClass('error-message').text(msg);
+                            }
                         }
                     }
                 });
-                
+
             });
-            
             container.append(newItem);
+            if(itemIndex < 1) {
+                $('.hw-hasmany-item').find('.btn_delete').hide();
+            }
         });
-        
-        $(data.option.add).click(function() 
-        {
+
+        if(!data.entities.length) {
             itemIndex++;
-            
+
             var newItem = tmpItem.clone();
             var arrInput = newItem.find('[name]');
-            
+
             // Set new index for input
             $.each(arrInput,function(subIndex,input)
             {
                 var fieldName = $(input).attr('name');
                 $(input).attr('name',data.name+'['+itemIndex+']['+fieldName+']');
-                
+
                 if($(input).attr('type') == 'checkbox') // Specific for Cake 3
                 {
                     $(input).val(1);
@@ -543,19 +549,47 @@ var Core =
                     $(input).val('');
                 }
             });
-            
+            container.append(newItem);
+            $('.hw-hasmany-item').find('.btn_delete').hide();
+
+        }
+
+        $(data.option.add).click(function()
+        {
+            itemIndex++;
+
+            var newItem = tmpItem.clone();
+            var arrInput = newItem.find('[name]');
+
+            // Set new index for input
+            $.each(arrInput,function(subIndex,input)
+            {
+                var fieldName = $(input).attr('name');
+                $(input).attr('name',data.name+'['+itemIndex+']['+fieldName+']');
+
+                if($(input).attr('type') == 'checkbox') // Specific for Cake 3
+                {
+                    $(input).val(1);
+                    $(input).prev('[type="hidden"]').val(0);
+                }
+                else
+                {
+                    $(input).val('');
+                }
+            });
+
             // Set event for delete button
-            newItem.find(data.option.delete).click(function() 
+            newItem.find(data.option.delete).click(function()
             {
                 $(this).closest('.hw-hasmany-item').remove();
                 return false;
             });
-            
+
             container.append(newItem);
             return false;
         });
-        
-        $(data.option.delete).click(function() 
+
+        $(data.option.delete).click(function()
         {
             $(this).closest('.hw-hasmany-item').remove();
             return false;

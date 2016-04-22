@@ -1,12 +1,12 @@
 <?php
-namespace Admin\Controller;
+namespace App\Controller;
 
-use Admin\Controller\AppController;
+use App\Controller\AppController;
 
 /**
  * DeputytypeMst Controller
  *
- * @property \Admin\Model\Table\DeputytypeMstTable $DeputytypeMst
+ * @property \App\Model\Table\DeputytypeMstTable $DeputytypeMst
  */
 class DeputytypeMstController extends AppController
 {
@@ -19,6 +19,7 @@ class DeputytypeMstController extends AppController
         $list = $this->DeputytypeMst->find('all')->toArray();
         $cate = $this->DeputytypeMst->buildTree($this->DeputytypeMst->generateCategories($list), 0);
         $this->set(compact('cate'));
+        $this->viewBuilder()->layout('admin');
     }
 
     /**

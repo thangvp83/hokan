@@ -1,17 +1,17 @@
 <?php
-namespace Admin\Model\Table;
+namespace App\Model\Table;
 
-use Admin\Model\Entity\InsuranceMst;
+use App\Model\Entity\InsuranceOption;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * InsuranceMst Model
+ * InsuranceOption Model
  *
  */
-class InsuranceMstTable extends Table
+class InsuranceOptionTable extends Table
 {
 
     /**
@@ -24,9 +24,15 @@ class InsuranceMstTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('insurance_mst');
+        $this->table('insurance_option');
         $this->displayField('id');
         $this->primaryKey('id');
+
+        $this->belongsTo('insurance_mst', [
+            'foreignKey' => 'insurance_code',
+            'joinType' => 'INNER',
+            'className' => 'InsuranceMst'
+        ]);
     }
 
     /**
@@ -42,28 +48,16 @@ class InsuranceMstTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('deputytype_code', 'create')
-            ->notEmpty('deputytype_code');
+            ->requirePresence('insurance_code', 'create')
+            ->notEmpty('insurance_code');
 
         $validator
             ->requirePresence('code', 'create')
             ->notEmpty('code');
 
         $validator
-            ->requirePresence('insurance_name_local_01', 'create')
-            ->notEmpty('insurance_name_local_01');
-
-        $validator
-            ->requirePresence('insurance_name_local_02', 'create')
-            ->notEmpty('insurance_name_local_02');
-
-        $validator
-            ->allowEmpty('insurance_name_eng');
-
-        $validator
-//            ->boolean('lifetime_flg')
-            ->requirePresence('lifetime_flg', 'create')
-            ->notEmpty('lifetime_flg');
+            ->requirePresence('option_name', 'create')
+            ->notEmpty('option_name');
 
         $validator
             ->boolean('data_flg')
