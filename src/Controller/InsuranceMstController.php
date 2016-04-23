@@ -73,9 +73,10 @@ class InsuranceMstController extends AppController
 
             $insuranceMst->created_time = new Date();
             $insuranceMst->update_time = new Date();
-            $insuranceMst->create_user = $this->CurUser->last_name;
-            $insuranceMst->update_user = $this->CurUser->last_name;
-            debug($insuranceMst);die;
+            $insuranceMst->create_user = isset($this->CurUser->last_name)?$this->CurUser->last_name : GROUP_ADMIN;
+            $insuranceMst->update_user = isset($this->CurUser->last_name)?$this->CurUser->last_name : GROUP_ADMIN;
+
+//            debug($insuranceMst);die;
             if ($this->InsuranceMst->save($insuranceMst)) {
                 $this->Flash->success(__('The insurance mst has been saved.'));
                 return $this->redirect(['action' => 'index']);
