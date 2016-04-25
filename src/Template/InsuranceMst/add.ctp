@@ -36,9 +36,9 @@
                         <div class="col-md-6">
                             <div class="form-group"></div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label"><?= __('Deputytype Code') ?></label>
+                                <label class="col-md-4 control-label"><?= __('Deputytype code') ?></label>
                                 <div class="col-md-8">
-                                    <?= $this->Form->input('deputytype_code', ['options' => $cate,'required' => false, 'placeholder' => __('Deputytype Code'), 'class'=>'form-control']); ?>
+                                    <?= $this->Form->input('deputytype_code', ['options' => $cate,'required' => false, 'placeholder' => __('Deputytype code'), 'class'=>'form-control']); ?>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -48,31 +48,31 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label"><?= __('Insurance Name Local 01') ?></label>
+                                <label class="col-md-4 control-label"><?= __('Insurance name local 01') ?></label>
                                 <div class="col-md-8">
-                                    <?= $this->Form->input('insurance_name_local_01', ['required' => false, 'placeholder' => __('Insurance Name Local 01'), 'class'=>'form-control']); ?>
+                                    <?= $this->Form->input('insurance_name_local_01', ['required' => false, 'placeholder' => __('Insurance name local 01'), 'class'=>'form-control']); ?>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label"><?= __('Insurance Name Local 02') ?></label>
+                                <label class="col-md-4 control-label"><?= __('Insurance name local 02') ?></label>
                                 <div class="col-md-8">
-                                    <?= $this->Form->input('insurance_name_local_02', ['required' => false, 'placeholder' => __('Insurance Name Local 02'), 'class'=>'form-control']); ?>
+                                    <?= $this->Form->input('insurance_name_local_02', ['required' => false, 'placeholder' => __('Insurance name local 02'), 'class'=>'form-control']); ?>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label"><?= __('Insurance Name Eng') ?></label>
+                                <label class="col-md-4 control-label"><?= __('Insurance name eng') ?></label>
                                 <div class="col-md-8">
-                                    <?= $this->Form->input('insurance_name_eng', ['required' => false, 'placeholder' => __('Insurance Name Eng'), 'class'=>'form-control']); ?>
+                                    <?= $this->Form->input('insurance_name_eng', ['required' => false, 'placeholder' => __('Insurance name eng'), 'class'=>'form-control']); ?>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label"><?= __('Lifetime Flg') ?></label>
+                                <label class="col-md-4 control-label"><?= __('Lifetime flag') ?></label>
                                 <div class="col-md-8">
-                                    <?= $this->Form->input('lifetime_flg', ['options' => $lifetime_flg,'required' => false, 'placeholder' => __('Lifetime Flg'), 'class'=>'form-control']); ?>
+                                    <?= $this->Form->input('lifetime_flg', ['options' => $lifetime_flg,'required' => false, 'placeholder' => __('Lifetime flag'), 'class'=>'form-control']); ?>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label"><?= __('Data Flg') ?></label>
+                                <label class="col-md-4 control-label"><?= __('Data flag') ?></label>
                                 <div class="col-md-8">
                                     <?= $this->Form->checkbox('data_flg', ['class'=>'checkbox', 'label'=>false]); ?>
                                 </div>
@@ -97,7 +97,6 @@
                                         </td>
                                         <td class="col-md-6">
                                             <?= $this->Form->input('option_name', ['required' => false, 'placeholder' => __('Option name'), 'class'=>'form-control']); ?>
-
                                         </td>
                                     </tr>
                                     <tr class="form-group"><td></td><td>&nbsp;</td></tr>

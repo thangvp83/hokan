@@ -56,6 +56,7 @@ if (!defined('NONLIFE')) {define('NONLIFE', 0);}
 if (!defined('LIFETIME')) {define('LIFETIME', 1);}
 if (!defined('FORMULA')) {define('FORMULA', -1);}
 
+
 return [
     'Core' => [
         'Users'=> [
